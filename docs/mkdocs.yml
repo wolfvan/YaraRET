@@ -1,0 +1,8 @@
+site_name: YaraRET Documentation
+strict: false
+theme: readthedocs
+docs_dir: './docs'
+pages:
+- Home: 
+  - Index: './index.md'
+  - Command Reference: './readTheDocs.md'
