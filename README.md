@@ -14,13 +14,13 @@ In order to deal with forensics cases based on weak clues, YaraRET provides diff
 
 
 
-#Install
+# Install
 
 For a compiled bin, you can download last release from Github.
 
 Also, you can  download git repo and build it.
 
-####Dependencies
+#### Dependencies
 
 Yara
 Radare2
@@ -77,8 +77,8 @@ For a complex analysis, YaraRET provides a shell mode which allows an analysis a
 
  
  This tool was introduced in this talk at r2con 2018
- https://www.youtube.com/watch?v=trLVw9J-mfw
  
- https://github.com/radareorg/r2con2018/blob/master/talks/08-YaraRET/NotAnotherRET.pdf
+ - https://www.youtube.com/watch?v=trLVw9J-mfw
  
- The command reference it's at 
+ - https://github.com/radareorg/r2con2018/blob/master/talks/08-YaraRET/NotAnotherRET.pdf
+ 
