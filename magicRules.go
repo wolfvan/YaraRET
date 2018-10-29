@@ -28,7 +28,6 @@ import (
 	"strings"
 	"os"
 	"sort"
-	"strconv"
 	"log"
 
 )
@@ -55,80 +54,6 @@ func (a offsetSorter) Len() int           { return len(a) }
 func (a offsetSorter) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
 func (a offsetSorter) Less(i, j int) bool { return a[i].offset < a[j].offset }
 
-
-func step1(){
-
-	var sliceFileDump []fileDump
-	
-	var maxsize uint64
-
-	var sliceOffset []string
-
-	maxsize = 90000
-
-	
-	supported := []string{"threegp","sevenzip","amazonkindleupdate","appleworks5","appleworks6","avi","bmp","bzip","canonraw","crx","dalvik","dat","dba","deb","dmg","doc","elf64","flac","flash","gif","gzip","is","javaclass","jpg","kodakcineon","macho","microsoftOffice","midi","mkv","mp3","mpeg","ost","pcap","pcapng","pdf","pe","png","pds","pst","pyc","rar","rpm","rtf","tape","tar","tarzip","tiff","utf8","vmdk","wasm","wav","woff","xar","xml","xz","zip","zlib"}
-
-	
-
-	stage1 := yaraStage1("./RAW","./APT33.yar")
-
-
-	//fmt.Println(stage1)
-
-	for _, elem := range stage1{
-		for _, elem1 := range supported{
-			//count := count+1
-			comp, err := yara.NewCompiler()
-			if err != nil {
-				fmt.Println(err)
-			}		
-			rule := buildRule("0", strconv.Itoa(int(elem.offset+maxsize)), elem1)
-			comp.AddString(rule, "")
-			//fmt.Println(rule)
-			rules, err := comp.GetRules()
-			if err != nil {
-				fmt.Println(err)
-			}
-			matches, err := rules.ScanFile("./RAW", 0, 0)
-			if len(matches)>0{
-				//fmt.Println(matches)
-
-				for _, matches := range matches {
-					for _, stringf := range matches.Strings {
-						fmt.Println(sliceOffset)
-						if stringInSlice(strconv.Itoa(int(elem.offset)),sliceOffset){
-								fmt.Println("Se repiten")
-							}else{
-								//fmt.Println("offsetHeader "+strconv.Itoa(int(stringf.Offset)))
-								//fmt.Println("rule "+ matches.Rule)
-								s := fileDump{rule: elem.rule, offsetHeader: stringf.Offset, offsetFooter: stringf.Offset+maxsize, filetype:matches.Rule}
-								//fmt.Println(s)
-								sliceFileDump = append(sliceFileDump, s)
-								sliceOffset = append(sliceOffset, strconv.Itoa(int(stringf.Offset)))
-								
-							}
-					}
-				}
-				//fmt.Println(sliceOffset)
-				//fmt.Println(sliceFileDump)
-
-			}
-
-		}
-		//fmt.Println("llego aqui")
-		//fmt.Println(rules)	
-		// if err != nil {
-		// 	fmt.Println(err)
-		// }
-		// fmt.Println(matches)	
-	}
-
-	//fmt.Println(stage1)
-
-
-
-}
 
 
 func stringInSlice(a string, list []string) bool {
