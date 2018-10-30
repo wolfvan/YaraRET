@@ -121,7 +121,7 @@ var {globalVariable} : Change the value of global variables.
 var maxsize {value}: Changes the value of the maxsize used in footer finding.
 ```
 ```
-var history: Until this command, every command is going to be saved in a file. Very useful if this 
+var history: After this command, every command is going to be saved in a file. Very useful if this 
 ```
 
 
