@@ -517,7 +517,7 @@ func set2Cmd(argument []string, rawdisk string) {
 					}
 
 				}else{
-					fmt.Println("[!] This file does not have a support for PDF\nPutting a generic footer")
+					fmt.Println("[!] This file does not have footer support\nPutting a generic footer")
 					for _, elem2:= range sliceSet{
 						resultStruct = newResult{Rule: elem2.Rule, OffsetHeader: elem2.OffsetHeader, OffsetFooter: elem2.OffsetHeader+maxsize64, Data: elem2.Data, Yara: elem2.Yara, Ioc: elem2.Ioc, Index: elem2.Index, Hash: elem2.Hash, Size: maxsize64, Ssdeep: elem2.Ssdeep}									
 						tmpslice = append(tmpslice, resultStruct)
