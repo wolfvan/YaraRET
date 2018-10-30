@@ -602,7 +602,6 @@ func yaraLightCmd(argument []string, rawdisk string) {
 		resultsYara := searchYara(rawdisk, argument[0])
 		if len(resultsYara)>0{
 			fmt.Println("[+] Results found!")
-			fmt.Println(resultsYara)
 			for _, elem := range sliceSet {
 				for _, elem1 := range resultsYara {
 					if stringInSlice(elem1.rule, rulesIn) == false {
